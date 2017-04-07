@@ -1,25 +1,28 @@
 package net.asasha.dominoes.model.entity;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  */
 public class Bone {
-    private final int [] spots = new int[2];
+    private Set<Integer> spots = new HashSet();
 
-    public Bone(int... args) {
+    public Bone(Integer... args) {
         if (args == null || args.length==0)
             return;
 
-        spots[0] = spots[1] = args[0];
-        spots[1] = args.length>1 ? args[1]: args[0];
+        spots.addAll(Arrays.asList(args));
     }
 
-    public int[] getSpots() {
+    public Set<Integer> getSpots() {
         return spots;
     }
 
     public boolean isContains(int number){
-        return spots[0]== number || spots[1] == number;
+        return spots.contains(number);
     }
 
 }
